@@ -20,4 +20,3 @@ void odbijPaletka(pilka& p1, Paletka& pad, float& dx, float& dy) {
 	if ((pozycjaPilki.x == pozycjaPaletki.x + 150 || pozycjaPilki.x + 2*promien == pozycjaPaletki.x) && pozycjaPilki.y + promien >= pozycjaPaletki.y && pozycjaPilki.y + promien <= pozycjaPaletki.y + 20) dx = -dx;
 
 }
-
