@@ -1,39 +1,37 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include<time.h>
+#include <time.h>
+#include <vector>
 #include "paletka.hpp"
 #include "pilka.hpp"
+#include "blok.hpp"
 
-void odbij(pilka& p1, Paletka& pad, sf::RenderWindow& window, int& dx, int& dy) {
+void odbij(pilka& p1, sf::RenderWindow& window, float& dx, float& dy) {
 
-    if (p1.getPos().x > window.getSize().x - 40 || p1.getPos().x < 0) {
+    if (p1.getPos().x > window.getSize().x - 2*p1.getPromien() || p1.getPos().x < 0) {
         dx = -dx; 
     }
 
-    if (p1.getPos().y > window.getSize().y - 40 || p1.getPos().y < 0) {
+    if (p1.getPos().y > window.getSize().y - 2 * p1.getPromien() || p1.getPos().y < 0) {
         dy = -dy; 
     }
-
-    if (p1.getPos().x + 20 >= pad.getPos().x && p1.getPos().x <= pad.getPos().x + 150 &&
-        p1.getPos().y + 38 <= pad.getPos().y && p1.getPos().y + 42 >= pad.getPos().y) {
-        dy = -dy; 
-        
-    }
-     
 }
 
 
 int main() {
     srand(time(NULL));
 
-    float predkosc_paletki = 0.7;
+    float predkosc_paletki = 0.5f;
 
     sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML works!");
-    Paletka pad(450, 750); 
-    pilka p1(480,380);
+    Paletka pad(450, 735); 
+    pilka p1(480,380, 30);
     int x = 0, y = 0;
-    int dx = rand()%5+1, dy = rand() % 5+1;
+    float dx = 0.5f, dy = -0.5f;
+    utworzSiatkeBlokow(0.0f, 0.0f, 5, 10, 100.0f, 50.0f);
+    
     sf::Clock zegar;
+
 
     while (window.isOpen()) {
         sf::Event event;
@@ -48,16 +46,18 @@ int main() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && pad.getPos().x >= 0) {
             pad.przesun(-predkosc_paletki);
         }
-        if (zegar.getElapsedTime().asMilliseconds() > 10.0f) {
-        
-            odbij(p1, pad, window, dx, dy);
+        if (zegar.getElapsedTime().asMilliseconds() > 1.0f) {
+            odbij(p1, window, dx, dy);
+            
             p1.przesun(dx, dy);
             zegar.restart();
         }
-        std::cout << "p1: " << p1.getPos().x << ", " << p1.getPos().y << std::endl;
-        std::cout << "pad: " << pad.getPos().x << ", " << pad.getPos().y << std::endl;
+
 
         window.clear();
+        rysujBloki(window);
+        odbijanieBloki(p1, dx, dy, 0.f);
+        odbijPaletka(p1, pad, dx, dy);
         window.draw(pad.getPaletka());
         window.draw(p1.getPilka());
         window.display();

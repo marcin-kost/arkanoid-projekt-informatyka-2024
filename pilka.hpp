@@ -9,10 +9,13 @@ private:
     sf::Vector2f position;
     sf::CircleShape ball;
 public:
-    pilka(float x_in, float y_in);
+    pilka(float x_in, float y_in, float promien_in);
     void przesun(float x_in, float y_in);
-    sf::CircleShape getPilka() { return ball; }
+    void zmienPromien(int o_ile);
+    sf::CircleShape& getPilka() { return ball; }
     sf::Vector2f getPos() { return ball.getPosition(); }
+    float getPromien() const { return ball.getRadius(); }
 };
+
 
 #endif

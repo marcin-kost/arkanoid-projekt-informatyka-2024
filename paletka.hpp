@@ -3,6 +3,7 @@
 #define PALETKA_HPP
 
 #include <SFML/Graphics.hpp>
+#include "pilka.hpp"
 
 class Paletka {
 private: 
@@ -14,4 +15,5 @@ public:
     sf::RectangleShape getPaletka() const { return paddle; }
     sf::Vector2f getPos() const { return paddle.getPosition(); }
 };
+void odbijPaletka(pilka& p1, Paletka& pad, float& dx, float& dy);
 #endif
