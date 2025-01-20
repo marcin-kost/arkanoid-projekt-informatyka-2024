@@ -15,14 +15,14 @@ void utworzSiatkeBlokow(float startX, float startY, int liczbaWierszy, int liczb
 
 
 	for (int i = 0; i < liczbaWierszy; ++i) {
-		std::vector<Blok> kolumna; // Tworzenie jednego wiersza
+		std::vector<Blok> kolumna; // tworzenie jednego wiersza
 		for (int j = 0; j < liczbaKolumn; ++j) {
 			float x = startX + j * szerokoscBloku;
 			float y = startY + i * wysokoscBloku;
 
-			kolumna.emplace_back(x, y, false, tekstura); // Dodanie nowego bloku
+			kolumna.emplace_back(x, y, false, tekstura); // dodanie nowego bloku
 		}
-		rzad.push_back(kolumna); // Dodanie wiersza do wektora siatki
+		rzad.push_back(kolumna); // dodanie wiersza do wektora siatki
 	}
 }
 

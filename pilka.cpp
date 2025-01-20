@@ -21,9 +21,9 @@ void pilka::przesun(float x_in, float y_in)
     ball.move(pos);
 }
 void pilka::zmienPromien(int o_ile) {
-    float promien = ball.getRadius() + o_ile;       // Zaktualizuj promieñ
+    float promien = ball.getRadius() + o_ile; 
     if(promien > 5.f){
-    ball.setRadius(promien);    // Ustaw nowy promieñ w SF
+    ball.setRadius(promien); 
     }
 }
 void pilka::odbij(pilka& p1, sf::RenderWindow& window, float& dx, float& dy) {

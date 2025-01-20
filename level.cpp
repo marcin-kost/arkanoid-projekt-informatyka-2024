@@ -260,11 +260,10 @@ void Level::menu() {
 				bool wybrano = false;
 				menu_napis_level.obwodka(window, 2, sf::Color::White);
 				if (event.key.code == sf::Keyboard::Enter) {
-					while (!wybrano && !sf::Keyboard::isKeyPressed(Escape)) {  // Modified condition
+					while (!wybrano && !sf::Keyboard::isKeyPressed(Escape)) {
 						sf::Event levelEvent;
 						window.clear();
 
-						// Update visual state before drawing
 						if (level_wybrane == 1) {
 							menu_napis_level_1.obwodka(window, 2, sf::Color::White);
 							menu_napis_level_2.obwodka(window, 0, sf::Color::White);
@@ -274,28 +273,24 @@ void Level::menu() {
 							menu_napis_level_2.obwodka(window, 2, sf::Color::White);
 						}
 
-						// Draw the level options
 						window.draw(menu_napis_level_1.getNapis());
 						window.draw(menu_napis_level_2.getNapis());
 						window.display();
 
-						// Handle events
 						while (window.pollEvent(levelEvent)) {
 							if (levelEvent.type == sf::Event::KeyReleased) {
-								// Handle navigation
 								if (levelEvent.key.code == sf::Keyboard::Down && level_wybrane == 1) {
 									level_wybrane = 2;
 								}
 								if (levelEvent.key.code == sf::Keyboard::Up && level_wybrane == 2) {
 									level_wybrane = 1;
 								}
-								// Handle selection
 								if (levelEvent.key.code == sf::Keyboard::Enter) {
 									resetuj_level();
 									ktory_level = level_wybrane;
 									czy_level = true;
 									wybrano = true;
-									//gra();
+									gra();
 									return;
 								}
 							}
