@@ -131,12 +131,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="blok.cpp" />
+    <ClCompile Include="gracz.cpp" />
+    <ClCompile Include="level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="napis.cpp" />
+    <ClCompile Include="nieregularny.cpp" />
     <ClCompile Include="paletka.cpp" />
     <ClCompile Include="pilka.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="blok.hpp" />
+    <ClInclude Include="gracz.hpp" />
+    <ClInclude Include="level.hpp" />
+    <ClInclude Include="napis.hpp" />
+    <ClInclude Include="nieregularny.hpp" />
     <ClInclude Include="paletka.hpp" />
     <ClInclude Include="pilka.hpp" />
   </ItemGroup>

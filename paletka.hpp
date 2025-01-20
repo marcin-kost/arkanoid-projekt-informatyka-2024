@@ -1,19 +1,23 @@
 #pragma once
-#ifndef PALETKA_HPP
-#define PALETKA_HPP
+#ifndef Paletka_HPP
+#define Paletka_HPP
 
 #include <SFML/Graphics.hpp>
 #include "pilka.hpp"
 
-class Paletka {
+class Prostokat {
 private: 
-    sf::RectangleShape paddle;
-
+    sf::RectangleShape prostokat;
+    float szer;
+    float dlug;
 public:
-    Paletka(float x_in, float y_in);
+    Prostokat(float x_in, float y_in, float szer, float dlug);
     void przesun(float x_in);
-    sf::RectangleShape getPaletka() const { return paddle; }
-    sf::Vector2f getPos() const { return paddle.getPosition(); }
+    sf::RectangleShape getProstokat() const { return prostokat; }
+    sf::Vector2f getPos() const { return prostokat.getPosition(); }
+    void odbijProstokat(pilka& p1, Prostokat& paletka, float& dx, float& dy);
+    void ustaw_teksture(const sf::Texture& tekstura);
+    void zmien_rozmiar(float szer, float dlug);
+    void zmienPos(float x, float y) { prostokat.setPosition(x, y); }
 };
-void odbijPaletka(pilka& p1, Paletka& pad, float& dx, float& dy);
 #endif
